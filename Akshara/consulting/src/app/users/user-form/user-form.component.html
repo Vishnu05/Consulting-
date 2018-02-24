@@ -1,0 +1,104 @@
+<div class="container">
+  <h3 style=color:cadetblue>User detail</h3>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="row">
+     <div class="form-group col-lg-6">
+     <input  type="hidden"  [formControl]="form.controls['id']"  [(ngModel)]="employee.id">
+    <div class="form-group" [ngClass]="{'has-error':!form.controls['firstName'].valid && form.controls['firstName'].touched}">
+        <label>First Name:</label>
+        <input class="form-control" type="text" placeholder="John" [formControl]="form.controls['firstName']"  [(ngModel)]="employee.firstName">
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+        <div *ngIf="form.controls['firstName'].hasError('required') && form.controls['firstName'].touched"
+         class="alert alert-danger">You must include a first name.</div>
+    </div>
+    
+      <div class="form-group" [ngClass]="{'has-error':!form.controls['lastName'].valid && form.controls['lastName'].touched}">
+        <label>Last Name:</label>
+        <input class="form-control" type="text" placeholder="John" [formControl]="form.controls['lastName']" [(ngModel)]="employee.lastName">
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+        <div *ngIf="form.controls['lastName'].hasError('required') && form.controls['lastName'].touched"
+         class="alert alert-danger">You must include a Last name.</div>
+    </div>
+    
+      <div class="form-group" [ngClass]="{'has-error':!form.controls['dob'].valid && form.controls['dob'].touched}">
+        <label>DOB:</label>
+        
+       
+        <ng-datepicker [formControl]="form.controls['dob']" [(ngModel)]="employee.dob"  ></ng-datepicker>
+        <!-- The hasError method will tell us if a particular error exists -->
+       
+        <div *ngIf="form.controls['dob'].hasError('required') && form.controls['dob'].touched"
+         class="alert alert-danger">You must include a dob.</div>
+    </div>
+    
+      <div class="form-group" [ngClass]="{'has-error':!form.controls['email'].valid && form.controls['email'].touched}">
+        <label>E-Mail:</label>
+        <input class="form-control" type="text" placeholder="John" [formControl]="form.controls['email']" [(ngModel)]="employee.email">
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+        <div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched"
+         class="alert alert-danger">You must include a Email.</div>
+    </div>
+    
+      <div class="form-group" [ngClass]="{'has-error':!form.controls['panNo'].valid && form.controls['panNo'].touched}">
+        <label>PAN No:</label>
+        <input class="form-control" type="text" placeholder="John" [formControl]="form.controls['panNo']" [(ngModel)]="employee.panNo">
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+        <div *ngIf="form.controls['panNo'].hasError('required') && form.controls['panNo'].touched"
+         class="alert alert-danger">You must include a PAN.</div>
+    </div>
+    
+      <div class="form-group" [ngClass]="{'has-error':!form.controls['aadharNo'].valid && form.controls['aadharNo'].touched}">
+        <label>Aadhar No:</label>
+        <input class="form-control" type="text" placeholder="John" [formControl]="form.controls['aadharNo']" [(ngModel)]="employee.aadharNo">
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+        <div *ngIf="form.controls['aadharNo'].hasError('required') && form.controls['aadharNo'].touched"
+         class="alert alert-danger">You must include a Aadhar.</div>
+    </div>
+    
+      <div class="form-group" [ngClass]="{'has-error':!form.controls['mobileNo'].valid && form.controls['mobileNo'].touched}">
+        <label>Mobile No:</label>
+        <input class="form-control" type="text" placeholder="John" [formControl]="form.controls['mobileNo']" [(ngModel)]="employee.mobileNo">
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+        <div *ngIf="form.controls['mobileNo'].hasError('required') && form.controls['mobileNo'].touched"
+         class="alert alert-danger">You must include a Mobile No.</div>
+    </div>
+    
+      <div class="form-group" >
+        <label>Other Contact No:</label>
+        <input class="form-control" type="text" placeholder="John" [formControl]="form.controls['otherContactNo']" [(ngModel)]="employee.otherContactNo">
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+       
+    </div>
+    
+      <div class="form-group" >
+        <label>Address:</label>
+       
+        <!-- The hasError method will tell us if a particular error exists -->
+        <textarea  class="form-control" type="textarea" placeholder="John" [formControl]="form.controls['address']" [(ngModel)]="employee.address"></textarea>
+        
+    </div>
+    
+      <div class="form-group" >
+        <label>Photo:</label>
+        
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+      <input type="file" class="form-control" (change)="fileChange($event)" placeholder="Upload file" accept=".png,.jpeg" [formControl]="form.controls['photo']" [(ngModel)]="employee.photo">
+    </div>
+    
+     
+   
+  	 <div class="form-group"> 
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+      </div>
+    </div>
+    </div>
+   </form>
+ </div>

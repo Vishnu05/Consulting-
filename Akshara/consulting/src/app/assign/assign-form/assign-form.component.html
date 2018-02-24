@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>Assign a Client to a Employee</h1>
+  <form [formGroup]="form" (ngSubmit)="assign()">
+    <div class="row">
+     <div class="form-group col-lg-6">
+     
+
+     <div>
+      <label>SELECT THE EMPLOYEE:</label>
+      <select  class="form-control">
+    <option *ngFor="let employee of employees" value= {{employee.firstName}} >
+      {{employee.firstName}}
+    </option>
+  </select>
+  </div>
+   <div >
+    <label>SELECT THE CLIENT:</label>
+    <select  class="form-control">
+  <option *ngFor="let client of clients" value= {{client.companyName}} >
+    {{client.companyName}}
+  </option>
+</select>
+</div>
+
+<label for="timeslots">Assign Services to a Client</label>
+    <div *ngIf="services">
+        <span *ngFor="let service of services">
+            <label>
+                <input type="checkbox" value="{{service.serviceName}}" name="{{service.serviceName}}"/>{{service.serviceName}}
+            </label>
+         </span>
+    </div>
+    
+   
+    
+       
+    
+     
+    
+     
+   
+  	 <div class="form-group"> 
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+      </div>
+    </div>
+    </div>
+   </form>
+ </div>

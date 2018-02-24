@@ -1,0 +1,73 @@
+<div class="container">
+  <h3>Sign Up Detail</h3>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="row">
+     <div class="form-group col-lg-6">
+     <input  type="hidden"  [formControl]="form.controls['id']"  [(ngModel)]="registration.id">
+    <div class="form-group" [ngClass]="{'has-error':!form.controls['firstName'].valid && form.controls['firstName'].touched}">
+        <label>First Name:</label>
+        <input class="form-control" type="text" placeholder="John" [formControl]="form.controls['firstName']"  [(ngModel)]="registration.firstName">
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+        <div *ngIf="form.controls['firstName'].hasError('required') && form.controls['firstName'].touched"
+         class="alert alert-danger">You must include a first name.</div>
+    </div>
+    
+      <div class="form-group" [ngClass]="{'has-error':!form.controls['lastName'].valid && form.controls['lastName'].touched}">
+        <label>Last Name:</label>
+        <input class="form-control" type="text" placeholder="John" [formControl]="form.controls['lastName']" [(ngModel)]="registration.lastName">
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+        <div *ngIf="form.controls['lastName'].hasError('required') && form.controls['lastName'].touched"
+         class="alert alert-danger">You must include a Last name.</div>
+    </div>
+    
+      
+    
+      <div class="form-group" [ngClass]="{'has-error':!form.controls['email'].valid && form.controls['email'].touched}">
+        <label>E-Mail:</label>
+        <input class="form-control" type="text" placeholder="John" [formControl]="form.controls['email']" [(ngModel)]="registration.email">
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+        <div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched"
+         class="alert alert-danger">You must include a Email.</div>
+    </div>
+    
+      <div class="form-group" [ngClass]="{'has-error':!form.controls['userID'].valid && form.controls['userID'].touched}">
+        <label>USER ID:</label>
+        <input class="form-control" type="text" placeholder="John" [formControl]="form.controls['userID']" [(ngModel)]="registration.userID">
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+        <div *ngIf="form.controls['userID'].hasError('required') && form.controls['userID'].touched"
+         class="alert alert-danger">You must include a USERID.</div>
+    </div>
+    
+      <div class="form-group" [ngClass]="{'has-error':!form.controls['passWord'].valid && form.controls['passWord'].touched}">
+        <label>Password:</label>
+        <input class="form-control" type="password" placeholder="John" [formControl]="form.controls['passWord']" [(ngModel)]="registration.passWord">
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+        <div *ngIf="form.controls['passWord'].hasError('required') && form.controls['passWord'].touched"
+         class="alert alert-danger">You must include a Aadhar.</div>
+    </div>
+    
+      <div class="form-group" [ngClass]="{'has-error':!form.controls['rol'].valid && form.controls['rol'].touched}">
+        <label>Role</label>
+        <select class="form-control" [(ngModel)]="registration.rol" [formControl]="form.controls['rol']" #type>
+          <option *ngFor="let role of roles" value="{{role}}">{{role}}</option>
+          </select>
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+        <div *ngIf="form.controls['rol'].hasError('required') && form.controls['rol'].touched"
+         class="alert alert-danger">You must select a role.</div>
+    </div>
+    
+      
+   
+  	 <div class="form-group"> 
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+      </div>
+    </div>
+    </div>
+   </form>
+ </div>

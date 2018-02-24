@@ -1,0 +1,53 @@
+<div class="container">
+  <h1>Service Details</h1>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="row">
+     <div class="form-group col-lg-6">
+     <input  type="hidden"  [formControl]="form.controls['id']"  [(ngModel)]="service.id">
+    <div class="form-group" [ngClass]="{'has-error':!form.controls['serviceName'].valid && form.controls['serviceName'].touched}">
+        <label>NEW SERVICES NAME:</label>
+        <input class="form-control" type="text" placeholder="John" [formControl]="form.controls['serviceName']"  [(ngModel)]="service.serviceName">
+        <!-- The hasError method will tell us if a particular error exists -->
+        
+        <div *ngIf="form.controls['serviceName'].hasError('required') && form.controls['serviceName'].touched"
+         class="alert alert-danger">You must include a new services category.</div>
+    </div>
+    <div >
+    <label>SELECT SERVICES CATEGORY:</label>
+    <select  class="form-control" [(ngModel)]="service.serviceCategory" [formControl]="form.controls['serviceCategory']">
+  <option *ngFor="let country of categories" value= {{country.servicecategoryname}} >
+    {{country.servicecategoryname}}
+  </option>
+</select>
+</div>
+    
+     <div class="form-group" [ngClass]="{'has-error':!form.controls['sdate'].valid && form.controls['sdate'].touched}">
+        <label>Service Start Date:</label>
+        
+       
+        <ng-datepicker [formControl]="form.controls['sdate']" [(ngModel)]="service.sdate"></ng-datepicker>
+        <!-- The hasError method will tell us if a particular error exists -->
+       
+        <div *ngIf="form.controls['sdate'].hasError('required') && form.controls['sdate'].touched"
+         class="alert alert-danger">You must include a Service Start Date.</div>
+    </div>
+    
+       
+    
+      <div class="form-group" >
+        <label>NEW SERVICES DESCRIPTION:</label>
+       
+        <!-- The hasError method will tell us if a particular error exists -->
+        <textarea  class="form-control" type="textarea" placeholder="John" [formControl]="form.controls['serviceDescription']" [(ngModel)]="service.serviceDescription"></textarea>
+        
+    </div>
+    
+     
+   
+  	 <div class="form-group"> 
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+      </div>
+    </div>
+    </div>
+   </form>
+ </div>
